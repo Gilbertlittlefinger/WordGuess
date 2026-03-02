@@ -5,7 +5,7 @@ WordGuess game implementation.
 @version 1.0.0
 @date 5/27/21 11:02 AM
 """
-
+import person
 
 class WordGuess:
     """WordGuess game class - ready for implementation."""
