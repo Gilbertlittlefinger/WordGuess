@@ -39,7 +39,9 @@ class WordGuess:
             if all(letter in self.guessed_letters for letter in self.selected_word):
                 print(f"Congratulations! You've guessed the word: {self.selected_word}")
                 break
-            
+            # Implement a way to show correctly guessed letters in their positions and underscores for unguessed letters
+            display_word = ''.join(letter if letter in self.guessed_letters else '_' for letter in self.selected_word)
+            print(f"Current word: {display_word}")
             
             if self.attempts == 3:
                 print("Hint: The word is related to programming languages, data structures, and algorithms.")
