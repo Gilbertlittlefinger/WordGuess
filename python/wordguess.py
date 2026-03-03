@@ -11,16 +11,15 @@ import person
 
 class WordGuess:
     """WordGuess game class - ready for implementation."""
-    #Below is where I will create a simple loop to run a WordGuess game. I will need to create a list of words, randomly select one, and then allow the user to guess letters until they either win or lose.
     def __init__(self):
         self.words = ["python", "java", "Sqlscript", "javascript", "ruby", "csharp", "cryptography", "algorithm", "data", "structure"]
         self.selected_word = random.choice(self.words)
         self.guessed_letters = set()
         self.max_attempts = 6
         self.attempts = 0
-    pass
+        pass
     def play(self):
-         while True:
+        while True:
             pass
             guess = input("Welcome to Word Guess! Guess a letter: ").lower()
             if guess in self.selected_word:
@@ -40,8 +39,12 @@ class WordGuess:
             if all(letter in self.guessed_letters for letter in self.selected_word):
                 print(f"Congratulations! You've guessed the word: {self.selected_word}")
                 break
-
-            # Insert an option for te user to guess the entire word if they have guessed at least 3 letters correctly
+            
+            
+            if self.attempts == 3:
+                print("Hint: The word is related to programming languages, data structures, and algorithms.")
+            elif self.attempts == 5:
+                print("Hint: The word starts with the letter '{}'.".format(self.selected_word[0]))
             if len(self.guessed_letters) >= 3:
                 full_guess = input("Do you want to guess the entire word? (y/n): ").lower()
                 if full_guess == "y":
@@ -55,9 +58,14 @@ class WordGuess:
                         if self.attempts >= self.max_attempts:
                             print(f"Game over! The word was: {self.selected_word}")
                             break
+        user_input = input("Do you want to play again? (y/n): ").lower()
+        if user_input == "y":
+            self.__init__()  # Reset the game state
+            self.play()  # Start a new game
+        else:
+            print("Thanks for playing! Goodbye!")
 
             
-
     
 
 
